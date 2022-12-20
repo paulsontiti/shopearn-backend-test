@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node dist/app.js",
   },
-  "author": "",
+  "author": "Paulson Nwoha",
   "license": "ISC",
   "keywords": [],
   "description": "",
