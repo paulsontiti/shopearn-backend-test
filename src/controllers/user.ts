@@ -16,15 +16,10 @@ export const signup = (req, res) => {
       return res.status(400).json({
         message: `Another person with the email-${req.body.email} already exist`,
       });
-    const { firstName, lastName, email, password, userName, contact } =
-      req.body.user;
+    const { email, password } = req.body.user;
     new user({
-      firstName,
-      lastName,
       email,
       password,
-      userName,
-      contact,
     }).save((err, user) => {
       if (err) return res.status(400).json({ mesage: err.message });
       if (user)
