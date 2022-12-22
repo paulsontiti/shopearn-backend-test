@@ -1,4 +1,4 @@
-import user from '../models/user.js';
+import Customer from '../models/customer.js';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
@@ -10,14 +10,14 @@ const generateToken = (user) => {
 };
 
 export const signup = (req, res) => {
-  user.findOne({ email: req.body.user.email }).exec((err, oldUser) => {
+  Customer.findOne({ email: req.body.user.email }).exec((err, oldUser) => {
     if (err) return res.status(400).json({ mesage: err.message });
     if (oldUser)
       return res.status(400).json({
         message: `Another person with the email-${req.body.user.email} already exist`,
       });
     const { email, password } = req.body.user;
-    new user({
+    new Customer({
       email,
       password,
     }).save((err, user) => {
@@ -32,7 +32,7 @@ export const signup = (req, res) => {
 };
 
 export const signin = (req, res) => {
-  user.findOne({ email: req.body.email }).exec((err, user) => {
+  Customer.findOne({ email: req.body.email }).exec((err, user) => {
     if (err) return res.status(400).json({ mesage: 'Somethings went wrong' });
     if (user) {
       try {
@@ -53,7 +53,7 @@ export const signin = (req, res) => {
   });
 };
 export const getUsers = (req, res) => {
-  user.find({}).exec((err, users) => {
+  Customer.find({}).exec((err, users) => {
     if (err) return res.status(400).json({ message: err.message });
     //else continue
     if (users) {
