@@ -5,22 +5,14 @@ const userSchema = new mongoose.Schema(
   {
     firstName: {
       type: String,
-      min: 3,
-      max: 50,
-      trim: true,
       lowercase: true,
     },
     lastName: {
       type: String,
-      min: 3,
-      max: 50,
-      trim: true,
       lowercase: true,
     },
     userName: {
       type: String,
-      trim: true,
-      unique: true,
       index: true,
       lowercase: true,
     },

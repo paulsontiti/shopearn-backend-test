@@ -10,11 +10,11 @@ const generateToken = (user) => {
 };
 
 export const signup = (req, res) => {
-  user.findOne({ email: req.body.email }).exec((err, oldUser) => {
+  user.findOne({ email: req.body.user.email }).exec((err, oldUser) => {
     if (err) return res.status(400).json({ mesage: err.message });
     if (oldUser)
       return res.status(400).json({
-        message: `Another person with the email-${req.body.email} already exist`,
+        message: `Another person with the email-${req.body.user.email} already exist`,
       });
     const { email, password } = req.body.user;
     new user({
