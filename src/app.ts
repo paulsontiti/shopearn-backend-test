@@ -3,7 +3,7 @@ import env from 'dotenv';
 import mongoose from 'mongoose';
 import cors from 'cors';
 //routes
-import userRouter from './routes/user.js';
+import customerRouter from './routes/customer.js';
 import categoryRouter from './routes/category.js';
 import productRouter from './routes/product.js';
 import cartRouter from './routes/cart.js';
@@ -20,7 +20,7 @@ app.use(cors()); // Use this after the variable declaration
 
 //middlewares
 app.use(express.json());
-app.use('/api/users', userRouter);
+app.use('/api/customers', customerRouter);
 app.use('/api/categories', categoryRouter);
 app.use('/api/products', productRouter);
 app.use('/api/carts', cartRouter);

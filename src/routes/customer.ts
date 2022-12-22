@@ -1,6 +1,6 @@
 import express from 'express';
 import { check } from 'express-validator';
-import { getUsers, signin, signup } from '../controllers/user.js';
+import { getCustomers, signin, signup } from '../controllers/customer.js';
 import { isAdmin } from '../middleware/admin.js';
 import { auth } from '../middleware/common.js';
 import {
@@ -9,10 +9,10 @@ import {
   validateSignUpRequest,
 } from '../validators/auth.js';
 
-const userRouter = express.Router();
+const customerRouter = express.Router();
 
-userRouter.post('/signup', signup);
-userRouter.post('/signin', signin);
-userRouter.get('/', auth, isAdmin, getUsers);
+customerRouter.post('/signup', signup);
+customerRouter.post('/signin', signin);
+customerRouter.get('/', auth, isAdmin, getCustomers);
 
-export default userRouter;
+export default customerRouter;
